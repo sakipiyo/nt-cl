@@ -14,16 +14,16 @@ const AppLayout = () => {
             //認証チェック
             const user = await authUtils.isAuthenticated();
             if(!user) {
-                navigate("/login");
+                navigate("/");
             }
         };
         checkAuth();
     }, [navigate]);
     return (
         <div>
-            <Box sx={{display: "flex"}}>
+            <Box sx={{ display: "flex" }}>
                 <Sidebar />
-                <Box sx={{ flexGrow: 1, p:1, width: "max-content" }}>
+                <Box sx={{ flexGlow: 1, p:1 , width: "max-content" }}>
                     <Outlet />
                 </Box>
             </Box>
