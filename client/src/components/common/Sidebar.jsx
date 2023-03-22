@@ -3,10 +3,12 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined"
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined"
 import React from 'react'
 import assets from '../../assets/index';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux"
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user.value);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -33,7 +35,7 @@ const Sidebar = () => {
               justifyContent: "space-between",
             }}>
             <Typography variant="body2" fontWeight="700">
-              qwertyu
+              {user.username}
             </Typography>
             <IconButton onClick={logout}>
               <LogoutOutlinedIcon />
@@ -71,6 +73,33 @@ const Sidebar = () => {
               <AddBoxOutlinedIcon fontSize="small" />
             </IconButton>
           </Box>
+        </ListItemButton>
+        <ListItemButton 
+          sx={{ pl: "20px" }} 
+          component={Link} 
+          to="/memo/12345678"
+        >
+          <Typography>
+            📝仮置きのメモ
+          </Typography>
+        </ListItemButton>
+        <ListItemButton 
+          sx={{ pl: "20px" }} 
+          component={Link} 
+          to="/memo/12345678"
+        >
+          <Typography>
+            📝仮置きのメモ
+          </Typography>
+        </ListItemButton>
+        <ListItemButton 
+          sx={{ pl: "20px" }} 
+          component={Link} 
+          to="/memo/12345678"
+        >
+          <Typography>
+            📝仮置きのメモ
+          </Typography>
         </ListItemButton>
       </List>
 

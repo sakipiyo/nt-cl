@@ -5,9 +5,13 @@ import { Outlet, useNavigate } from "react-router-dom";
 import ntLogo from "../../assets/images/nt-logo.png";
 import authUtils from "../../utils/authUtils";
 import Sidebar from "../common/Sidebar";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/features/userSlice";
 
 const AppLayout = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     useEffect(() => {
         //JWTを持っているか確認する。
         const checkAuth = async () => {
@@ -15,6 +19,9 @@ const AppLayout = () => {
             const user = await authUtils.isAuthenticated();
             if(!user) {
                 navigate("/");
+            } else {
+                //ユーザーを保存する
+                dispatch(setUser(user));
             }
         };
         checkAuth();
