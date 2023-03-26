@@ -6,11 +6,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import memoApi from '../api/memoApi';
 import { useSelector, useDispatch } from "react-redux";
 import { setMemo } from '../redux/features/memoSlice';
+import EmojiPicker from '../components/common/EmojiPicker';
 
 const Memo = () => {
     const {memoId} = useParams();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [icon, setIcon] = useState("");
     const memos = useSelector((state) => state.memo.value);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -22,6 +24,7 @@ const Memo = () => {
                 console.log(res);
                 setTitle(res.title);
                 setDescription(res.description);
+                setIcon(res.icon);
             } catch (err) {
                 alert(err);
             }
@@ -102,6 +105,8 @@ const Memo = () => {
                         sx={{
                             padding: "10px 50px"
                         }}>
+                        <Box>
+                            <EmojiPicker icon={icon} />
                             <TextField 
                                 onChange={updateTitle}
                                 value={title}
@@ -126,6 +131,7 @@ const Memo = () => {
                                     ".MuiOutlinedInput-root": { fontSize: "1rem" },
                                 }}
                             />
+                        </Box>
                     </Box>
             </>
         </div>
