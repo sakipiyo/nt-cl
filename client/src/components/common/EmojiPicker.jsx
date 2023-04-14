@@ -12,6 +12,17 @@ const EmojiPicker = (props) => {
 
 const showPicker = () => setIsShowPicker(!isShowPicker);
 
+const selectEmoji = (e) => {
+    const emojiCode = e.unified.split("-");
+    console.log(emojiCode);
+    let codesArray = [];
+    emojiCode.forEach((el) => codesArray.push("0x" + el));
+    const emoji = String.fromCodePoint(...codesArray);
+    console.log(emoji);
+    setIsShowPicker(false);
+    props.onChange(emoji);
+}
+
   return (
     <Box>
         <Typography 
@@ -27,7 +38,9 @@ const showPicker = () => setIsShowPicker(!isShowPicker);
             position: "absolute", 
             zIndex: "100" 
             }}>
-            <Picker/>
+            <Picker
+                onEmojiSelect={selectEmoji}
+            />
         </Box>
     </Box>
   )
