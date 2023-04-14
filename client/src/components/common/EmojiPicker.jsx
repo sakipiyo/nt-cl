@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
+import Picker from '@emoji-mart/react';
 
 const EmojiPicker = (props) => {
     const [selectedEmoji, setSelectedEmoji] = useState();
@@ -16,6 +17,9 @@ const EmojiPicker = (props) => {
         >
             {selectedEmoji}
         </Typography>
+        <Box sx={{display:"none"}}>
+            <Picker/>
+        </Box>
     </Box>
   )
 };

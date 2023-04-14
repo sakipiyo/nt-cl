@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
 import userReducer from "./features/userSlice";
 import memoReducer from "./features/memoSlice"
 
